@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html ng-app='staffgridApp'>
+  <head>
+    <title>Angular table</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>Angular table directives</h1>
+    <div ng-controller='MainController'>
+      <staffgrid data='data' items-per-page='17'></staffgrid>
+    </div>
+  </body>
+
+  <script type="text/javascript" src='/javascripts/vendor/jquery.min.js'></script>
+  <script type="text/javascript" src='/javascripts/vendor/underscore.js'></script>
+  <script type="text/javascript" src='/javascripts/vendor/angular.js'></script>
+  <script type="text/javascript" src='/javascripts/main.js'></script>
+  <script type="text/javascript" src='/javascripts/staffgrid.js'></script>
+</html>
