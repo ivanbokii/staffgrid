@@ -1,10 +1,14 @@
 <div>
   <table>
     <tr>
-      <th ng-repeat='header in headers'>{{ header }}</th>
+      <th ng-repeat='header in headers'>
+        <a ng-click='sort($index)' href="#">{{ header }}</a>
+      </th>
     </tr>
     <tr ng-repeat='item in items'>
       <td ng-repeat='key in headersKeys'>{{ item[key] }}</td>
     </tr>
   </table>
+  <div class="staffgrid-addons" ng-transclude>
+  </div>
 </div>

@@ -7,7 +7,9 @@
   <body>
     <h1>Angular table directives</h1>
     <div ng-controller='MainController'>
-      <staffgrid data='data' items-per-page='17'></staffgrid>
+      <staffgrid data='data' items-per-page='40'>
+        <staffgridpager></staffgridpager>
+      </staffgrid>
     </div>
   </body>
 
@@ -16,4 +18,5 @@
   <script type="text/javascript" src='/javascripts/vendor/angular.js'></script>
   <script type="text/javascript" src='/javascripts/main.js'></script>
   <script type="text/javascript" src='/javascripts/staffgrid.js'></script>
+  <script type="text/javascript" src='/javascripts/staffgrid-pager.js'></script>
 </html>

@@ -7,6 +7,7 @@ app.controller('MainController', function ($scope, $http) {
 
   function initGrid (gridData) {
     $scope.data = gridData;
+    window.data = gridData;
   }
 
   function showError () {
