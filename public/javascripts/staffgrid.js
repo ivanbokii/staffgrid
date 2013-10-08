@@ -2,11 +2,12 @@ var app = angular.module('staffgridApp');
 app.directive('staffgrid', function () {
   var staffgrid = {
     restrict: 'E',
-    replace: false,
+    replace: true,
     transclude: true,
     scope: {
       data: '=data',
-      itemsPerPage: '@itemsPerPage'
+      itemsPerPage: '@itemsPerPage',
+      initialSort: '@initialSort'
     },
     templateUrl: '/templates/staffgrid.html',
     controller: function ($scope) {
@@ -43,8 +44,8 @@ app.directive('staffgrid', function () {
         //used in template to render rows
         scope.headersKeys = extractHeadersKeys(scope.data);
 
-        //initial sort, this should be configurable
-        scope.sort(0);
+        //initial sort with configured sorting column
+        scope.sort(parseInt(scope.initialSort) - 1);
 
         scope.items = getInitialItems(scope.data, scope.itemsPerPage);
         scope.currentPage = 0;
@@ -53,6 +54,9 @@ app.directive('staffgrid', function () {
       //----sorting-------------------------------------------------------------
       //sorts column with index == headerIndex
       scope.sort = function (headerIndex) {
+        //in case of bad headIndex fallback to the first column
+        if (headerIndex < 0 || headerIndex >= scope.headers.length) headerIndex = 0;
+
         //nothing was sorted yet
         if (_.isUndefined(scope.sortInfo)) {
 
@@ -63,14 +67,20 @@ app.directive('staffgrid', function () {
 
           showSorting(headerIndex, scope.sortInfo.order, false);
         }
+        //user clicked on already sorted column (in ascending order) - need
+        //to sort in descending
         else if (scope.sortInfo.index === headerIndex && scope.sortInfo.order === 'asc') {
           scope.sortInfo.order = 'desc';
           showSorting(headerIndex, scope.sortInfo.order, true);
         }
+        //user clicked on already sorted column (in descending order) - need
+        //to sort in ascending
         else if (scope.sortInfo.index === headerIndex && scope.sortInfo.order === 'desc') {
           scope.sortInfo.order = 'asc';
           showSorting(headerIndex, scope.sortInfo.order, true);
         }
+        //user clicked on a new column - remove sorting symbol from the last
+        //one and show for the new one
         else {
           removeSortingSymbol(scope.sortInfo.index);
 
@@ -80,6 +90,7 @@ app.directive('staffgrid', function () {
           showSorting(headerIndex, scope.sortInfo.order, false);
         }
 
+        //actual sorting
         scope.data = scope.data.sort(function (a, b) {
           var key = scope.headersKeys[headerIndex];
 
@@ -90,9 +101,11 @@ app.directive('staffgrid', function () {
           return 0;
         });
 
+        //redraw current page for the sorted data
         scope.changePage(scope.currentPage);
       }
 
+      //shows sorting symbol next to a column name
       var showSorting = function (headerIndex, order, isAlreadyApplied) {
         if (isAlreadyApplied) {
           removeSortingSymbol(headerIndex);

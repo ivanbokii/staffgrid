@@ -40,11 +40,18 @@ app.directive('staffgridpager', function () {
       }
 
       var computePagerInfo = function () {
+        var itemsPerPage = gridController.getItemsPerPage();
+
         //need to +1 because user should see 1 for the first page instead of 0
-        //because of this we also need to +1 total pages
         scope.totalItems = scope.data.length;
-        scope.totalPages = Math.floor(scope.data.length / gridController.getItemsPerPage()) + 1;
+        scope.totalPages = Math.floor(scope.data.length / itemsPerPage);
         scope.currentPage = 1;
+
+        //we also need to +1 total pages in case if all items / items per page
+        //has excess
+        if (scope.data.length % itemsPerPage !== 0) {
+          scope.totalPages += 1;
+        }
       }
     }
   }
