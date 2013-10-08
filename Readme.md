@@ -14,7 +14,6 @@ Widget uses jQuery, Underscore.js and of course Angular.js
 
 ```html
 <!DOCTYPE html>
-<!DOCTYPE html>
 <html ng-app='staffgridApp'>
   <head>
     <title>Angular table</title>
