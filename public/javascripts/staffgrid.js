@@ -7,9 +7,10 @@ app.directive('staffgrid', function () {
     scope: {
       data: '=data',
       itemsPerPage: '@itemsPerPage',
-      initialSort: '@initialSort'
+      initialSort: '@initialSort',
+      width: '@width'
     },
-    templateUrl: '/templates/staffgrid.html',
+    templateUrl: 'templates/staffgrid.html',
     controller: function ($scope) {
       this.getCurrentPage = function () {
         return $scope.currentPage;
@@ -28,14 +29,14 @@ app.directive('staffgrid', function () {
 
       $scope.changePage = this.changePage;
     },
-    link: function (scope) {
-
+    link: function (scope, element) {
       //wait for data
       scope.$watch('data', function () {
         //do not do anything since there is no data
         if (_.isUndefined(scope.data) || scope.data.length == 0) return;
 
         renderTable();
+        setupStyle();
       });
 
       var renderTable = function () {
@@ -51,9 +52,13 @@ app.directive('staffgrid', function () {
         scope.currentPage = 0;
       }
 
+      var setupStyle = function () {
+        element.find('table').css('width', scope.width + 'px');
+      }
+
       //----sorting-------------------------------------------------------------
       //sorts column with index == headerIndex
-      scope.sort = function (headerIndex) {
+      scope.sort = function (headerIndex, event) {
         //in case of bad headIndex fallback to the first column
         if (headerIndex < 0 || headerIndex >= scope.headers.length) headerIndex = 0;
 
@@ -102,7 +107,13 @@ app.directive('staffgrid', function () {
         });
 
         //redraw current page for the sorted data
-        scope.changePage(scope.currentPage);
+        if (scope.itemsPerPage !== 'all') {
+          scope.changePage(scope.currentPage);
+        }
+
+        if (!_.isUndefined(event)) {
+          event.preventDefault();
+        }
       }
 
       //shows sorting symbol next to a column name

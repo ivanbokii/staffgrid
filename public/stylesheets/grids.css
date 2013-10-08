@@ -1,0 +1,186 @@
+.simple-grid {
+  font-family: Arial;
+  font-size: 13px;
+  width: 800px;
+}
+
+.simple-grid td, th {
+  padding: 10px;
+}
+
+.simple-grid table {
+  text-align: center;
+
+  border: 1px solid #c6d5e1;
+  border-spacing: 0px;
+  border-collapse: collapse;
+}
+
+.simple-grid table th {
+  background-color: #cad1d7;
+}
+
+.simple-grid table th a {
+  color: #3d464d;
+}
+
+.simple-grid table tr:nth-of-type(even) {
+  background-color: #e5e8eb;
+}
+
+.simple-grid table tr:hover {
+  background-color: #e9ebe2;
+}
+
+.simple-grid table td {
+  border: 1px solid #c6d5e1;
+}
+
+.simple-grid .staffgrid-pager {
+  padding-top: 10px;
+}
+
+.simple-grid .staffgrid-pager a {
+  text-decoration: none;
+  color: #3d464d;
+  font-weight: bold;
+}
+
+.simple-grid .staffgrid-pager div {
+  float: right;
+}
+
+.simple-grid .staffgrid-pager input {
+  width: 40px;
+  text-align: center;
+}
+
+.simple-grid .staffgrid-pager .message {
+  float: right;
+  color: red;
+  margin-right: 50px;
+}
+
+/*----------------------------------------------------------------------------*/
+.second-grid {
+  width: 800px;
+  font-family:Arial, Helvetica, sans-serif;
+  color:#666;
+  font-size:12px;
+  text-shadow: 1px 1px 0px #fff;
+}
+
+.second-grid table {
+  background:#eaebec;
+  border:#ccc 1px solid;
+  border-collapse: collapse;
+
+  -moz-border-radius:3px;
+  -webkit-border-radius:3px;
+  border-radius:3px;
+
+  -moz-box-shadow: 0 1px 2px #d1d1d1;
+  -webkit-box-shadow: 0 1px 2px #d1d1d1;
+  box-shadow: 0 1px 2px #d1d1d1;
+}
+
+.second-grid th a {
+  color: #666;
+  text-decoration: none;
+}
+
+.second-grid table th {
+  padding:21px 25px 22px 25px;
+  border-top:1px solid #fafafa;
+  border-bottom:1px solid #e0e0e0;
+
+  background: #ededed;
+  background: -webkit-gradient(linear, left top, left bottom, from(#ededed), to(#ebebeb));
+  background: -moz-linear-gradient(top,  #ededed,  #ebebeb);
+}
+
+.second-grid table th:first-child {
+  text-align: left;
+  padding-left:20px;
+}
+
+.second-grid table tr:first-child th:first-child {
+  -moz-border-radius-topleft:3px;
+  -webkit-border-top-left-radius:3px;
+  border-top-left-radius:3px;
+}
+
+.second-grid table tr:first-child th:last-child {
+  -moz-border-radius-topright:3px;
+  -webkit-border-top-right-radius:3px;
+  border-top-right-radius:3px;
+}
+
+.second-grid table tr {
+  text-align: center;
+  padding-left:20px;
+}
+
+.second-grid table td:first-child {
+  text-align: left;
+  padding-left:20px;
+  border-left: 0;
+}
+
+.second-grid table td {
+  padding:18px;
+  border-top: 1px solid #ffffff;
+  border-bottom:1px solid #e0e0e0;
+  border-left: 1px solid #e0e0e0;
+
+  background: #fafafa;
+  background: -webkit-gradient(linear, left top, left bottom, from(#fbfbfb), to(#fafafa));
+  background: -moz-linear-gradient(top,  #fbfbfb,  #fafafa);
+}
+
+.second-grid table tr:last-child td {
+  border-bottom:0;
+}
+
+.second-grid table tr:last-child td:first-child {
+  -moz-border-radius-bottomleft:3px;
+  -webkit-border-bottom-left-radius:3px;
+  border-bottom-left-radius:3px;
+}
+
+.second-grid table tr:last-child td:last-child {
+  -moz-border-radius-bottomright:3px;
+  -webkit-border-bottom-right-radius:3px;
+  border-bottom-right-radius:3px;
+}
+
+.second-grid table tr:hover td {
+  background: #f2f2f2;
+  background: -webkit-gradient(linear, left top, left bottom, from(#f2f2f2), to(#f0f0f0));
+  background: -moz-linear-gradient(top,  #f2f2f2,  #f0f0f0);
+}
+
+.second-grid .staffgrid-pager {
+  padding-top: 10px;
+}
+
+.second-grid .staffgrid-pager a {
+  text-decoration: none;
+  color: #3d464d;
+  font-weight: bold;
+}
+
+.second-grid .staffgrid-pager div {
+  float: right;
+}
+
+.second-grid .staffgrid-pager input {
+  width: 40px;
+  text-align: center;
+}
+
+.second-grid .staffgrid-pager .message {
+  float: right;
+  color: red;
+  margin-right: 50px;
+}

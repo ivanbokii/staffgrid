@@ -3,7 +3,7 @@ app.directive('staffgridpager', function () {
   var pager = {
     restrict: 'E',
     require: '^staffgrid',
-    templateUrl: '/templates/staffgrid-pager.html',
+    templateUrl: 'templates/staffgrid-pager.html',
     replace: true,
     link: function (scope, element, attrs, gridController) {
 
@@ -15,6 +15,7 @@ app.directive('staffgridpager', function () {
       });
 
       scope.changePage = function () {
+        console.log('page change!!');
         if (!_.isEmpty(scope.currentPage) && scope.currentPage != 0 && !isNaN(parseInt(scope.currentPage))) {
           scope.message = '';
           scope.currentPage = parseInt(scope.currentPage);
@@ -25,18 +26,22 @@ app.directive('staffgridpager', function () {
         }
       }
 
-      scope.prevPage = function () {
+      scope.prevPage = function (event) {
         if (scope.currentPage > 1) {
           scope.currentPage -= 1;
           gridController.changePage(scope.currentPage - 1);
         }
+
+        event.preventDefault();
       }
 
-      scope.nextPage = function () {
+      scope.nextPage = function (event) {
         if (scope.currentPage != scope.totalPages) {
           scope.currentPage += 1;
           gridController.changePage(scope.currentPage - 1);
         }
+
+        event.preventDefault();
       }
 
       var computePagerInfo = function () {

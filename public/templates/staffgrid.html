@@ -1,13 +1,17 @@
 <div>
   <table>
-    <tr>
-      <th ng-repeat='header in headers'>
-        <a ng-click='sort($index)' href="#">{{ header }}</a>
-      </th>
-    </tr>
-    <tr ng-repeat='item in items'>
-      <td ng-repeat='key in headersKeys'>{{ item[key] }}</td>
-    </tr>
+    <thead>
+      <tr>
+        <th scope="col" ng-repeat='header in headers'>
+          <a ng-click='sort($index, $event)' href="#">{{ header }}</a>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat='item in items'>
+        <td ng-repeat='key in headersKeys'>{{ item[key] }}</td>
+      </tr>
+    </tbody>
   </table>
   <div class="staffgrid-addons" ng-transclude>
   </div>

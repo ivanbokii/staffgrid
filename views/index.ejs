@@ -3,13 +3,20 @@
   <head>
     <title>Angular table</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='/stylesheets/grids.css' />
   </head>
   <body>
-    <h1>Angular table directives</h1>
-    <div ng-controller='MainController'>
-      <staffgrid data='data' items-per-page='20' initial-sort='1'>
-        <staffgridpager></staffgridpager>
-      </staffgrid>
+    <div class='container'>
+      <h1>Angular table directive example</h1>
+      <div ng-controller='MainController'>
+        <staffgrid class='simple-grid' data='data' items-per-page='10' initial-sort='1' width='800'>
+          <staffgridpager></staffgridpager>
+        </staffgrid>
+
+        <staffgrid class='second-grid' data='data' items-per-page='20' initial-sort='4' width='800'>
+          <staffgridpager></staffgridpager>
+        </staffgrid>
+      </div>
     </div>
   </body>
 
