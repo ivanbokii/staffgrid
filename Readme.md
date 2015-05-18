@@ -2,8 +2,6 @@ StaffGrid
 ==========
 
 Simple table widget built as an Angular.js directive.
-You can see an example of this directive
-[here](http://staffgrid.ivanbokii.com)
 
 ![alt tag](http://i40.tinypic.com/rvx7o0.jpg)
 
